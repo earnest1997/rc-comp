@@ -1,0 +1,26 @@
+@import '@/styles';
+
+$prefixCls: '.#{$componentPrefixCls}-input' !default;
+
+#{$prefixCls} {
+  @include component-reset;
+  @include transition;
+  height: 32px;
+  line-height: 32px;
+  border: 1px solid palette('border');
+  padding: 0 12px;
+  border-radius: 2px;
+  -webkit-appearance: none; // fix safari input inset shadow
+  &:hover:not(#{&}-disabled),
+  &:focus:not(#{&}-disabled) {
+    border-color: palette('primary');
+    box-shadow: shadow();
+  }
+  &-disabled {
+    background: palette('disabled', 'light');
+    cursor: not-allowed;
+  }
+  &-error:not(#{&}-disabled) {
+    border-color: palette('error');
+  }
+}

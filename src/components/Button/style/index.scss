@@ -1,0 +1,167 @@
+@import '@/styles';
+@import './common.scss';
+
+$prefixCls: '#{$component-prefix}-button';
+$types: 'link', 'primary', 'dashed', 'danger', '';
+
+.#{$prefixCls} {
+  @include reset-component;
+  color: $button-default-color;
+  border: 1px solid $color-neutral-border;
+  padding: $button-default-padding;
+  font-size: $button-default-fontsize;
+  height: $button-default-height;
+  background-color: $button-default-bg;
+  border-radius: $button-border-radius;
+  transition: $button-transition;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: $button-default-box-shadow;
+  &:focus {
+    box-shadow: 0 0 0.1em $color-primary,
+      0 0 0.1em $color-primary;
+  }
+  &.#{$prefixCls}:focus{
+    opacity: 1;
+  }
+  /* 尺寸 */
+  &-small {
+    padding: $button-small-padding;
+    height: $button-small-height;
+  }
+  &-large {
+    padding: $button-large-padding;
+    height: $button-large-height;
+    font-size: $button-large-fontsize;
+  }
+  /* 类型 */
+  &-primary {
+    background-color: $color-primary;
+    color: $color-netural-content-light;
+    border-color: transparent;
+    @include hover('bg') {
+      color: #fff;
+    }
+  }
+  &-primary-ghost {
+    border-color: $color-primary;
+    color: $color-primary;
+    background-color: transparent;
+    @include hover('bg') {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+  &-dashed {
+    @include hover('color');
+    border: 1px dashed $color-neutral-border;
+    &-ghost {
+      @include ghost;
+      @include hover('bg');
+    }
+  }
+  &-danger {
+    background-color: $color-error;
+    border-color: $color-error;
+    color: $color-netural-content-light;
+    box-shadow: $button-danger-boxshadow;
+    @include hover('bg');
+    &.#{$prefixCls}-disabled {
+      box-shadow: none;
+    }
+    &:focus {
+      box-shadow: 0 0 0.1em $color-error, 0 0 0.1em $color-error;
+    }
+  }
+  &-danger-ghost {
+    color: $color-error;
+    border-color: $color-error;
+    @include hover('bg') {
+      @extend .#{$prefixCls}-danger-ghost;
+    }
+  }
+  &-link {
+    background-color: transparent;
+    box-shadow: none;
+    &-ghost {
+      @include ghost;
+      @include hover('bg');
+      color: $color-primary;
+    }
+    border: none;
+    color: $color-primary;
+    @include hover('bg') {
+      color: $color-primary;
+    }
+    &:focus{
+      box-shadow: none;
+    }
+  }
+  /* 不可用 */
+  &-disabled,
+  &-disabled:hover {
+    @include disable;
+    opacity: 1;
+  }
+  /* 幽灵按钮 */
+  &-ghost:not(#{&}-disabled) {
+    @include ghost;
+  }
+  &-ghost {
+    @include transparent-bg;
+    &.#{$prefixCls}{
+      box-shadow: none;
+    }
+  }
+  @each $type in $types {
+    &-#{$type}-ghost {
+      @include transparent-bg;
+      &.#{$prefixCls}{
+        box-shadow: none;
+      }
+    }
+  }
+  /* 形状 */
+  &-circle {
+    border-radius: 50%;
+    text-align: center;
+    height: $button-default-height;
+    min-width: $button-default-height;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &-round{
+    border-radius: 16px;
+    padding: 0 16px;
+    width: auto;
+  }
+  /* 等宽父元素 */
+  &-block {
+    width: 100%;
+  }
+  /* group */
+  &-group {
+    display: inline-flex;
+    .#{$prefixCls} {
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      
+      }
+      &.#{$prefixCls}:not(:last-child){
+        border-right: 0;
+      }
+      &:not(:first-child) {
+        position: relative;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      &-primary+.#{$prefixCls}-primary{
+        border-left-color: $button-primary-divider-color;
+      }
+    }
+  }
+  &:not(#{&}-danger):not(#{&}-disabled):not(#{&}-primary):not(#{&}-link) {
+    @include hover('color');
+  }
+}

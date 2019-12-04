@@ -1,0 +1,114 @@
+@import '@/styles';
+$prefixCls: '.#{$componentPrefixCls}-tabs' !default;
+
+#{$prefixCls} {
+  @include component-reset;
+  @include flex(center, flex-start, column);
+  &-card {
+    &-title {
+      @include flex(flex-start);
+      width: 100%;
+      background: palette('background');
+      &:hover {
+        cursor: pointer;
+      }
+      &-item {
+        padding: 10px 16px;
+        color: palette('title');
+        cursor: pointer;
+        border: 1px solid transparent;
+        font-size: 14px;
+        &.active {
+          position: relative;
+          color: palette('content', 'active');
+          z-index: 1;
+          background: palette('background', 'light');
+          border-color: palette('border', 'light');
+          border-bottom-color: #fff;
+        }
+      }
+    }
+    &-panel {
+      width: 100%;
+      border: 1px solid palette('border', 'light');
+      position: relative;
+      top: -1px;
+    }
+    &.inter {
+      #{$prefixCls}-title {
+        &-item {
+          transition: all 0.5s ease;
+          border-radius: 0;
+          padding: 10px 60px;
+          color: palette('title');
+          border: 2px solid palette('border', 'light');
+          position: relative;
+          z-index: 0;
+          border-right: 0;
+          border-bottom-color: transparent;
+        }
+      }
+      #{$prefixCls}-current-panel {
+        border-radius: 0;
+
+        padding: 20px;
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      &.outer {
+        #{$prefixCls}-title {
+          &-item {
+            padding: 5px 10px;
+          }
+        }
+        #{$prefixCls}-current-panel {
+          min-width: 300px;
+        }
+      }
+    }
+  }
+  &-line {
+    &-animate-border {
+      position: relative;
+      top: -1px;
+      background: palette('content', 'active');
+      height: 2px;
+      transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+        width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+        left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+        -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    &-title {
+      @include flex(flex-start);
+      position: relative;
+      .active {
+        color: palette('content', 'active');
+      }
+      &-item {
+        transition: all 0.3s;
+        padding: 7px 16px 9px;
+        font-weight: 400;
+        color: #333;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      width: 100%;
+      &::after {
+        width: 100%;
+        position: absolute;
+        height: 1px;
+        background: #e6e7e8;
+        bottom: 0;
+        content: '';
+      }
+    }
+  }
+}
+#{$prefixCls}-line-panel,
+#{$prefixCls}-card-panel {
+  &-hide {
+    display: none;
+  }
+}

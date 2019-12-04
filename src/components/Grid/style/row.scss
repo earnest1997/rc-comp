@@ -1,0 +1,35 @@
+@import '@/styles';
+
+$prefixCls: '#{$component-prefix}-row';
+
+.#{$prefixCls} {
+  display: flex;
+  &-align {
+    &-top {
+      align-items: flex-start;
+    }
+    &-middle {
+      align-items: center;
+    }
+    &-bottom {
+      align-items: flex-end;
+    }
+  }
+  &-justify {
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-space-around {
+      justify-content: space-around;
+    }
+    &-space-between {
+      justify-content: space-between;
+    }
+  }
+}

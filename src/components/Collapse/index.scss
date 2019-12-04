@@ -1,0 +1,52 @@
+@import '@/styles';
+
+$prefixCls: '.#{$componentPrefixCls}-collapse' !default;
+
+#{$prefixCls} {
+  &-item {
+    &-title {
+      @include flex(space-between);
+      cursor: pointer;
+      background: #1b1b44;
+      font-size: 20px;
+      color: #c6c6ca;
+      @include respond-to {
+        // font-size: d(46);
+        padding: d(40) d(66);
+      }
+    }
+    &-status {
+      @include respond-to {
+        @include flex(flex-end, center, row);
+        flex-basis: 100px;
+        flex-shrink: 0;
+        span {
+          font-size: d(36);
+          margin-right: d(29);
+          color: rgba(179, 179, 179, 1);
+          opacity: 0.6;
+        }
+        i {
+          float: right;
+        }
+      }
+    }
+    &-content {
+      @include transition;
+      background: #0f0f3a;
+      // padding: 30px;
+      overflow: hidden;
+      &-expand {
+        height: auto;
+      }
+    }
+    &-icon {
+      @include transition;
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      &-expand {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

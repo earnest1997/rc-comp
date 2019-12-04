@@ -1,0 +1,47 @@
+@import '@/styles';
+
+$prefixCls: '.#{$componentPrefixCls}-checkbox' !default;
+
+#{$prefixCls} {
+  height: 32px;
+  line-height: 32px;
+  &-item {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-right: 16px;
+    cursor: pointer;
+    input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      &:checked + #{$prefixCls}-item-icon-checked {
+        border-color: palette('primary');
+        &::after {
+          background: palette('primary');
+        }
+      }
+    }
+    &-icon {
+      @include transition;
+      @include flex;
+      width: 16px;
+      height: 16px;
+      // border-radius: 50%;
+      margin-right: 6px;
+      border: 1px solid palette('border');
+      &::after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        // border-radius: 50%;
+        background: #fff;
+      }
+    }
+    &:hover #{$prefixCls}-item-icon {
+      border-color: palette('primary');
+    }
+  }
+}

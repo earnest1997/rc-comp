@@ -1,0 +1,112 @@
+@import '@/styles';
+$prefixCls: '.#{$componentPrefixCls}-table' !default;
+
+#{$prefixCls} {
+  @mixin item {
+    padding: 15px 16px;
+    text-align: left;
+    &:last-child {
+      text-align: right;
+      border-bottom: 0 !important;
+    }
+  }
+  @include component-reset;
+  width: 100%;
+  border-collapse: collapse;
+  td,
+  th {
+    min-height: 51px !important;
+  }
+  &-thead {
+    background: palette('background', 'thead');
+    color: palette('content');
+    width: 100%;
+    border-bottom: 1px solid palette('divider');
+    &-item {
+      @include item;
+      font-weight: normal;
+      th {
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+  }
+  &-tbody {
+    border-bottom: 1px solid palette('divider');
+    tr {
+      width: -webkit-fill-available;
+      td {
+        @extend %text-elli;
+        white-space: nowrap;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid palette('divider');
+      }
+    }
+  }
+  &-trow {
+    color: palette('content', 'dark');
+    border-top: 0;
+  }
+  &-tcell {
+    @include item;
+  }
+  @include respond-to {
+    @include flex;
+    width: 100%;
+    font-size: r(24);
+    #{$prefixCls}-thead {
+      width: auto;
+      tr {
+        display: inline-flex;
+        flex-direction: column;
+        th {
+          width: r(200);
+          padding: r(29) 0;
+          text-align: center;
+          border: r(1) solid palette('divider');
+          border-right: none;
+          &:not(:last-child) {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+    #{$prefixCls}-tbody {
+      // @include flex;
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      tr {
+        // flex: 1;
+        @include flex(center, center, column);
+        border-bottom: none !important;
+        // width: 20%;
+        // width: auto;
+        // display: inline-block;
+        max-width: 100%;
+        td {
+          width: 100%;
+          padding: r(29) r(20);
+          text-align: center;
+          border: r(1) solid palette('divider');
+          border-bottom: none !important;
+          max-width: calc(100vw - #{d(30)} * 2 - #{r(200)});
+          text-overflow: ellipsis;
+          overflow: hidden;
+          word-break: keep-all;
+        }
+        &:not(:last-child) {
+          td {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+  // @media screen and (max-width: 900px) {
+  //   @mixin item {
+  //     // min-width: 60px;
+  //   }
+  // }
+}

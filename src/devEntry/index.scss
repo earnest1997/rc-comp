@@ -1,0 +1,28 @@
+@import '@/styles';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dev-main {
+  min-height: calc(100vh - 160px);
+}
+
+.play-ground {
+  padding: 32px;
+  hr {
+    margin: 40px 0;
+    color: $color-neutral-divider;
+  }
+  h2, h3 {
+    font-weight: normal;
+    color: $color-neutral-title;
+    margin-bottom: 20px;
+  }
+  h3 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+}

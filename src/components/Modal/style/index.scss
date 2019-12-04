@@ -1,0 +1,73 @@
+@import '@/styles';
+
+$prefixCls: '.#{$componentPrefixCls}-modal' !default;
+
+#{$prefixCls} {
+  @include component-reset;
+  background: palette('background', 'light');
+  box-shadow: shadow();
+  border-radius: 2px;
+  overflow: hidden;
+  min-width: 360px;
+  @include respond-to {
+    min-width: 0;
+    width: 82%;
+    max-width: calc(100% - 32px);
+  }
+  &-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 99;
+  }
+  &-mask {
+    @include transition;
+    @include flex;
+    position: fixed;
+    background: bgOpacity(2);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -100px;
+    transform-origin: 0% 0%;
+    // padding-bottom: 60%;
+    &-enter {
+      opacity: 0;
+      transform: translateY(-5px) rotateX(5deg);
+      &-active {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    &-exit {
+      opacity: 0;
+      transform: translateY(-5px) rotateX(5deg);
+    }
+  }
+  &-title {
+    @include flex(space-between);
+    padding: 12px 24px;
+    border-bottom: 1px solid palette('divider');
+    // font-weight: bold;
+    font-size: 16px;
+  }
+  &-body {
+    padding: 24px;
+    font-size: 14px;
+  }
+  &-footer {
+    padding: 12px 24px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid palette('divider');
+    button:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+  &-icon {
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+}

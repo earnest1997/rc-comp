@@ -1,0 +1,106 @@
+$component-prefix: 'himi';
+
+$color-primary: #2d8cf0;
+$color-primary-light: lighten($color-primary, 10%);
+$color-primary-dark: darken($color-primary, 10%);
+
+$color-info: #2db7f5;
+$color-success: #19be6b;
+$color-warning: #ff9900;
+$color-error: #ed4014;
+
+$color-neutral-title: #17233d;
+$color-neutral-content: #515a6e;
+$color-neutral-sub: #808695;
+$color-neutral-disabled: #c5c8ce;
+$color-neutral-border: #dcdee2;
+$color-neutral-divider: #e8eaec;
+$color-neutral-background: #f8f8f9;
+$color-netural-content-light: #fff;
+
+$size-title: 16px;
+$size-content: 14px;
+$size-sub: 12px;
+
+// Animation
+$ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+$ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+$ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+$ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+$ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+$ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+$ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+$ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+
+// reset-component
+$line-height-base: 1.5;
+$font-size-base: 14px;
+$text-color-base: $color-neutral-content;
+
+// Grid system
+$grid-columns: 24;
+$grid-gutter-width: 0;
+
+// Small screen / tablet
+$screen-sm: 576px;
+$screen-sm-min: $screen-sm;
+
+// Medium screen / desktop
+$screen-md: 768px;
+$screen-md-min: $screen-md;
+
+// Large screen / wide desktop
+$screen-lg: 992px;
+$screen-lg-min: $screen-lg;
+
+// Extra large screen / full hd
+$screen-xl: 1200px;
+$screen-xl-min: $screen-xl;
+
+// Extra extra large screen / large desktop
+$screen-xxl: 1600px;
+$screen-xxl-min: $screen-xxl;
+
+// provide a maximum
+$screen-xs-max: ($screen-sm-min - 1px);
+$screen-sm-max: ($screen-md-min - 1px);
+$screen-md-max: ($screen-lg-min - 1px);
+$screen-lg-max: ($screen-xl-min - 1px);
+$screen-xl-max: ($screen-xxl-min - 1px);
+
+// Button
+$button-default-color: rgba(0, 0, 0, 0.65);
+$button-default-bg: $color-neutral-background;
+$button-disabled-bg: #f5f5f5;
+$button-disabled-border-color: #d9d9d9;
+$button-disabled-color: rgba(0, 0, 0, 0.25);
+$button-default-padding: 0 15px;
+$button-default-fontsize: 14px;
+$button-default-height: 32px;
+$button-small-padding: 0 7px;
+$button-small-height: 24px;
+$button-large-padding: 0 15px;
+$button-large-height: 40px;
+$button-large-fontsize: 16px;
+$button-danger-boxshadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+$button-default-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+$button-border-radius: 4px;
+$button-transition: all 0.4s;
+$button-primary-divider-color:#40a9ff;
+
+// filter-img
+$filter-img-drag-bg-color:hsla(0,0%,100%,.9);
+
+// carousel
+$carousel-dot-bg:#bbb;
+$carousel-dot-opacity:.3;
+$carousel-dot-size:11px;
+$carousel-dot-margin:20px;
+$carousel-dot-active-bg:#696969;
+$carousel-transition:all .1s;

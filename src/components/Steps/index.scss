@@ -1,0 +1,72 @@
+@import '@/styles';
+$prefixCls: '.#{$componentPrefixCls}-steps' !default;
+
+#{$prefixCls} {
+  @include component-reset;
+  display: flex;
+  border-radius: 30px;
+  padding: 18px 56px;
+  background: palette('background');
+  width: fit-content;
+  @include respond-to {
+    padding: r(20);
+    font-size: r(24);
+  }
+  .col {
+    &-01 {
+      @include wh(24, 24);
+      @include flex;
+      border-radius: 50%;
+      color: palette('content', 'light');
+      background: palette('background', 'dark');
+      margin-right: 8px;
+      flex-shrink: 0;
+      @include respond-to {
+        margin-right: 5px;
+      }
+    }
+    &-02 {
+      color: palette('content');
+      margin-right: 8px;
+      @include respond-to {
+        margin-right: 5px;
+      }
+    }
+    &-03 {
+      width: 60px;
+      height: 1px;
+      background: palette('divider');
+      margin-right: 8px;
+      @include respond-to {
+        width: 15px;
+      }
+    }
+  }
+  &-item-container {
+    @include flex;
+    &:last-child {
+      .col {
+        &-02,
+        &-03 {
+          margin: 0;
+        }
+      }
+    }
+    .hidden {
+      display: none;
+    }
+    &.active {
+      .col-01 {
+        background: palette('background', 'active');
+        cursor: pointer;
+      }
+      .col-02 {
+        color: palette('content', 'active');
+        cursor: pointer;
+      }
+    }
+    .finished {
+      background: palette('content', 'active');
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '@/styles';
+
+$prefixCls: '.#{$componentPrefixCls}-form' !default;
+
+#{$prefixCls} {
+  @include component-reset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &-item {
+    @include flex(flex-start, flex-start);
+    width: fit-content;
+    &-label {
+      flex-shrink: 0;
+      line-height: 32px;
+    }
+    &-input {
+      line-height: 32px;
+    }
+    &-error {
+      @include transition;
+      height: 20px;
+      font-size: 12px;
+      line-height: 20px;
+      color: palette('error');
+      transform-origin: 0% 0%;
+      &-hide {
+        opacity: 0;
+        transform: rotateX(60deg);
+      }
+    }
+  }
+}

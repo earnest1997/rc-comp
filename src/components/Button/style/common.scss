@@ -1,0 +1,30 @@
+@mixin ghost {
+  color: $color-netural-content-light;
+  border-color: $color-netural-content-light;
+}
+
+@mixin transparent-bg {
+  background-color: transparent;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+@mixin hover($type: 'color') {
+  &:hover {
+    @if $type == 'bg' {
+      opacity: 0.7;
+    } @else {
+      color: $color-primary;
+      border-color: $color-primary;
+    }
+    @content;
+  }
+}
+
+@mixin disable {
+  cursor: not-allowed;
+  background-color: $button-disabled-bg;
+  border-color: $button-disabled-border-color;
+  color: $button-disabled-color;
+}
