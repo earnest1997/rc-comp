@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import {ITabProps,propTypes,defaultProps,ITitleProps} from './type'
 import './style'
 
-const Title = forwardRef(CTitle)
 
 export const Tabs = ({ panels, activeId, onChange, type = 'card' }:ITabProps) => {
   // const [current, setCurrent] = useState(currentIndex)
@@ -14,7 +13,7 @@ export const Tabs = ({ panels, activeId, onChange, type = 'card' }:ITabProps) =>
     currentIndex = panels.findIndex(({ id }) => id === activeId)
   }
   const [current, setCurrent] = useState(currentIndex)
-  const titleRefs = panels.map((_) => createRef())
+  const titleRefs = panels.map((_) => createRef<HTMLLIElement>())
   const panelCls = (index:number) =>
     classNames(
       `${prefixCls}-panel`,
@@ -32,7 +31,7 @@ export const Tabs = ({ panels, activeId, onChange, type = 'card' }:ITabProps) =>
   }, [activeId, panels])
   const [animateBorderStyle, setAnimateBorderStyle] = useState({})
   useEffect(() => {
-    const width = titleRefs[current].current!.offsetWidth
+    const width = (titleRefs[current].current as any).offsetWidth
     const translateX = width * current
     const _animateBorderStyle = {
       width,
@@ -51,7 +50,7 @@ export const Tabs = ({ panels, activeId, onChange, type = 'card' }:ITabProps) =>
             active={index === current}
             handleTitleItemClick={handleTitleItemClick}
             prefixCls={prefixCls}
-            ref={titleRefs[index]}
+            ref={titleRefs[index]!}
           />
         ))}
       </ul>
@@ -70,10 +69,10 @@ export const Tabs = ({ panels, activeId, onChange, type = 'card' }:ITabProps) =>
   )
 }
 
-function CTitle(
+const Title=forwardRef((
   { title, index, active, handleTitleItemClick=()=>{}, prefixCls }:ITitleProps,
-  ref:React.RefObject<HTMLLIElement>
-) {
+  ref:React.Ref<HTMLLIElement>
+) =>{
   return (
     <li
       className={classNames(`${prefixCls}-title-item`, {
@@ -88,7 +87,7 @@ function CTitle(
       {title}
     </li>
   )
-}
+})
 
 Tabs.displayName = 'Tabs'
 

@@ -9,21 +9,21 @@ import { createPortal, render, unmountComponentAtNode } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { getPrefixCls } from '@/utils'
-import {defaultProps, IMessageProp} from './type'
+import {defaultProps, IMessageProps,refType,classType,IMessage} from './type'
 import './index.scss'
 
 const prefixCls = getPrefixCls('message')
 
-export const Message = forwardRef(({ type, children, visible }:IMessageProp, ref:React.RefObject<HTMLDivElement>) => {
+export const Message = (forwardRef(({ type, children, visible }:IMessageProps, ref:React.Ref<refType>) => {
   const messageCls = classNames(prefixCls, type && `${prefixCls}-${type}`)
   const iconCls = classNames(
     `${prefixCls}-icon`,
     `icon ion-ios-${
-      {
+      ({
         info: 'alert',
         success: 'checkmark-circle',
         error: 'close-circle'
-      }[type]
+      } as classType)[type]
     }`
   )
   const [privateVisible, setPrivateVisible] = useState(false)
@@ -49,7 +49,7 @@ export const Message = forwardRef(({ type, children, visible }:IMessageProp, ref
     </CSSTransition>,
     getRootNode()
   )
-})
+})) as IMessage
 
 Message.info=(content:string, duration:number) => {
   renderMessage({ type: 'info', children: content, duration })
@@ -67,9 +67,9 @@ Message.displayName = 'Message'
 
 Message.defaultProps = defaultProps
 
-function renderMessage({ type, children, duration = 3000 }:{type:string,children:React.ReactNode[],duration:number}) {
+function renderMessage({ type, children, duration = 3000 }:{type:string,children:string,duration:number}) {
   let mountNode:any = document.createElement('div') 
-  const ref = createRef()
+  const ref = createRef<refType>()
   render(
     <Message type={type} ref={ref} visible>
       {children}

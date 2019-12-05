@@ -17,7 +17,7 @@ panels:panelType[];
 }
 
 export interface ITitleProps{
-  active:number;
+  active:boolean;
   prefixCls?:string;
   handleTitleItemClick?:(index:number)=>void;
   index:number;

@@ -1,0 +1,54 @@
+@import '@/styles';
+
+$prefixCls: 'component-carousel' !default;
+
+.#{$prefixCls} {
+  @include reset-component;
+  overflow: hidden;
+  position: relative;
+  &-img-list {
+    // width: 100%;
+    height: 300px;
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: $carousel-transition;
+    &-disabled-transtion{
+      transition-duration: 0s;
+      -webkit-transition-duration:0s;
+    }
+    &-item{
+      &-fade {
+        transition: $carousel-transition;
+        position: absolute;
+        top: 0;
+        left:0;
+        // display: none;
+        opacity: 0;
+        -webkit-will-change:opacity;
+        will-change:opacity;
+      }
+      &-active{
+        opacity: 1;
+        // display: block;
+      }
+    }
+  }
+  &-dot-list {
+    width: 100%;
+    @include flex;
+    bottom:0;
+ position: absolute;
+    &-item {
+      border-radius: 100%;
+      background-color: $carousel-dot-bg;
+      opacity: $carousel-dot-opacity;
+      width: $carousel-dot-size;
+      height: $carousel-dot-size;
+      margin: $carousel-dot-margin;
+      &-active {
+        background-color: $carousel-dot-active-bg;
+      }
+    }
+  }
+}

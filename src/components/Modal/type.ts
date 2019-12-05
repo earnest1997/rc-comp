@@ -3,7 +3,7 @@ import * as propType from 'prop-types'
 export interface IModalProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string
   visible: boolean
-  onClose: () => void
+  onClose?: () => void
   className?: string
   footer?: React.ReactNode
   closable?: boolean
@@ -16,7 +16,8 @@ export const propTypes = {
   onClose: propType.func,
   className: propType.string,
   closable: propType.bool,
-  maskClosable: propType.bool
+  maskClosable: propType.bool,
+  footer:propType.node
 }
 
 export const defaultProps: Partial<IModalProps> = {

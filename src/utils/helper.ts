@@ -6,8 +6,8 @@ export const omit = (obj: object, ...excludeProps: string[]) => {
   return result
 }
 
-export const omitInvaildProps = (props: object) => {
-  let result = {}
+export const omitInvaildProps = (props:any) => {
+  let result:any= {}
   Object.keys(props).reduce((obj, key) => {
     if (props[key] !== undefined) {
       result[key] = props[key]
