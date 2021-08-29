@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-commit": "sh check-todo.sh",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  }
+}
