@@ -3,7 +3,7 @@ branch=`git symbolic-ref --short HEAD`
 # fileListDiffFromMaster=`git diff master \$branch --name-only --stat`
 fileListDiffFromMaster=()
 fileListDiffFromPrev=`git diff --name-only --cached`
-fileList=(${fileListDiffFromMaster[@]},${fileListDiffFromPrev[*]})
+fileList=(${fileListDiffFromMaster[@]} ${fileListDiffFromPrev[*]})
 echo ${#fileList[@]}
 fileList=($(awk -v RS=' ' '!a[$1]++' <<< ${fileList[@]}))
 echo ${#fileList[@]}

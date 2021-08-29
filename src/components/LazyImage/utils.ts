@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-// TODO: 直接出现在页面中部或者底部 无限滚动的情况
+// TODO: 直接出现在页面中部或者底部的情况没考虑 
 export const useIsVisible=(doms, handler)=>{
     const [visibleIndex, setVisivleIndex] = useState(0)
     const ob = new IntersectionObserver(entries => {
