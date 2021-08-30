@@ -1,35 +1,41 @@
 #!/bin/sh
-branch=`git symbolic-ref --short HEAD`
-# fileListDiffFromMaster=`git diff master \$branch --name-only --stat`
+branch=$(git symbolic-ref --short HEAD)
 fileListDiffFromMaster=()
-fileListDiffFromPrev=`git diff --name-only --cached`
+fileListDiffFromPrev=()
+fileListDiffFromMaster+=($(git diff master $branch --name-only --stat))
+fileListDiffFromPrev+=($(git diff --name-only --cached))
+# 数组合并
 fileList=(${fileListDiffFromMaster[@]} ${fileListDiffFromPrev[*]})
-echo ${#fileList[@]}
-fileList=($(awk -v RS=' ' '!a[$1]++' <<< ${fileList[@]}))
-echo ${#fileList[@]}
+# 数组去重
+fileList=($(awk -v RS=' ' '!a[$1]++' <<<${fileList[@]}))
 arr=()
 todos=()
-# git diff master \$branch --name-only --stat
-for file in $fileList
-do  
-    a=`grep -c 'TODO' \$file`
-  if [ $a != 0 ]
-    # if [ $file =~ 'TODO' ]
-   then
-  arr[${#arr[@]}]=`basename \$file`
-  todos[${#todos[@]}]=`grep 'TODO\:[[:space:]]*[[:graph:]]\+' \$file`
-   fi
+for file in ${fileList[@]}; do
+	a=$(grep -c 'TODO:' $file)
+	if [ $a != 0 ]; then
+		arr[${#arr[@]}]=$(basename $file)
+		# echo 'wth'
+		todo=$(grep -o -E 'TODO:[[:space:]]*[[:graph:]]+' $file)
+		# echo $todo
+		text=${todo// /}
+		todos[${#todos[@]}]=$todo
+	fi
 done
-
-fileIncludeTodoLen=${#arr[@]}             
-i=0 
-if [ $fileIncludeTodoLen -gt 0 ]
-then
-echo '\033[31m 存在TODO \033[0m'
-for todo in ${todos[@]} 
-do
-pos=${arr[$i]}
-echo "\033[31m 存在\"${todo}\":位于\"${pos}\" \033[0m"
-let i++
-done
+# 获取数组的长度
+fileIncludeTodoLen=${#arr[@]}
+echo ${#todos[@]}
+i=0
+if [ $fileIncludeTodoLen -gt 0 ]; then
+	# 输出带有颜色的文字
+	echo '\033[31m 存在TODO \033[0m'
+	# 数组循环
+	for todo in ${todos[@]}; 
+	do
+		# 这里的{}貌似是必须的
+		# echo $todo
+		pos=${arr[$i]}
+		# 变量在双引号之间
+		echo "\033[31m 存在\"${todo}\":位于\"${pos}\" \033[0m"
+		let i++
+	done
 fi
