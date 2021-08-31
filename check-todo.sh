@@ -15,7 +15,7 @@ for file in ${fileList[@]}; do
 	if [ $a != 0 ]; then
 		todo=$(grep -o -E 'TODO:[[:space:]]*[[:graph:]]+' $file)
 		text=${todo// /}
-		todos[${#todos[@]}]=$todo
+		todos[${#todos[@]}]=$text
 	fi
 done
 # 获取数组的长度
