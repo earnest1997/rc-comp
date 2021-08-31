@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 check-todo.sh
+.husky
+node_modules
