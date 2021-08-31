@@ -24,7 +24,7 @@
     "extends": "react-app"
   },
   "hooks": {
-    "pre-commit": "sh check-todo.sh",
+    "pre-commit": "echo 'pre-commit'",
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
   },
   "browserslist": {
