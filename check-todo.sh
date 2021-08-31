@@ -31,4 +31,7 @@ if [ $fileIncludeTodoLen -gt 0 ]; then
 		echo "\033[31m ${todo} \033[0m"
 		let i++
 	done
+exit 1
+else
+exit 0
 fi
