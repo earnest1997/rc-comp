@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-// TODO:jidjei  jdie
+// TODO:jidjei
 //TODO:直接出现在页面中部或者底部的情况没考虑 
 export const useIsVisible=(doms, handler)=>{
     const [visibleIndex, setVisivleIndex] = useState(0)
@@ -27,5 +27,5 @@ export const useIsVisible=(doms, handler)=>{
       return ()=>{
           ob.unobserve(doms[visibleIndex])
       }
-    }, [])
+    }, [doms, ob, startObserve, visibleIndex])
 }
