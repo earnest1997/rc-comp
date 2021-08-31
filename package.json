@@ -24,10 +24,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "hooks": {
-    "pre-commit": "echo 'pre-commit'",
-    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
