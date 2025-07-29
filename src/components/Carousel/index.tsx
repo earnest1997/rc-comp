@@ -111,6 +111,7 @@ export const Carousel = forwardRef(
       let a=1
       setA(a)
     },1000)
+    console.log(a,111)
     // const  handleAutoPlay = useCallback(()=> {
     //   const playWithArg = play.bind(null, effect)
     //   console.log(interval,89444)
