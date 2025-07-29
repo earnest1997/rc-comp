@@ -48,7 +48,7 @@ import React, {
   );
   // 已经存在dom中的父元素
   const getRootNode = (cls:string) => {
-    let a =333333222
+    let a =333333222222
     return document.body.getElementsByClassName(cls)[0];
   };
   
@@ -89,6 +89,7 @@ import React, {
     //   关闭之前的
       observer.closePrevModal();
     //   渲染新的
+    const a =999
       render(true);
       observer.add(cls, hide);
     };
