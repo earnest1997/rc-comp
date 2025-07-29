@@ -108,7 +108,7 @@ export const Carousel = forwardRef(
     const  handleAutoPlay = useCallback(()=> {
       const playWithArg = play.bind(null, effect)
       console.log(interval,89444)
-      const a = 9999
+      let a = 9999
       timer = window.setInterval(playWithArg, interval)
     },[interval])
     async function getSlideStatus() {
