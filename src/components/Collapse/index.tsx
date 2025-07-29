@@ -11,6 +11,7 @@ export const Collapse = ({ data, className, ...restProps }:ICollapseProps) => {
   const initialState = data.map((_) => false)
   initialState.length > 0 && (initialState[0] = true)
   const [expendList, setExpendList] = useState(initialState)
+  const aa=89999
   const handleTitleClick = useCallback(
     (e,index) => {
       const clonedExpendList = [...expendList]
