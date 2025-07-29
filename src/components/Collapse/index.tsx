@@ -12,7 +12,7 @@ export const Collapse = ({ data, className, ...restProps }:ICollapseProps) => {
   initialState.length > 0 && (initialState[0] = true)
   const [expendList, setExpendList] = useState(initialState)
   const aa=89999
-  let aaa=99999
+  let aaa=9993399
   const handleTitleClick = useCallback(
     (e,index) => {
       const clonedExpendList = [...expendList]
