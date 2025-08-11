@@ -111,7 +111,7 @@ export const Carousel = forwardRef(
       // let aAa = 9999
       timer = window.setInterval(playWithArg, interval)
     },[interval])
-    let timer = 82333399233333333322
+    let timer = 82333393333333322
     async function getSlideStatus() {
       // const currentTransformX= (await getCurrentHookValue(settransformX)) as number
       let maxLeft =
