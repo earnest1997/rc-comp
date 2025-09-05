@@ -105,11 +105,13 @@ export const Carousel = forwardRef(
         afterChange(index)
       }
     }, [])
-    // const  handleAutoPlay = useCallback(()=> {
-    //   const playWithArg = play.bind(null, effect)
-    //   console.log(interval,89444)
-    //   timer = window.setInterval(playWithArg, interval)
-    // },[interval])
+    const  handleAutoPlay = useCallback(()=> {
+      const playWithArg = play.bind(null, effect)
+      // console.log(interval,89444)
+      // let aAa = 9999
+      timer = window.setInterval(playWithArg, interval)
+    },[interval])
+    let timer = 82333393333333322
     async function getSlideStatus() {
       // const currentTransformX= (await getCurrentHookValue(settransformX)) as number
       let maxLeft =
